@@ -10,9 +10,7 @@ public class BaseMappingConfig : Profile
     public static IMapper GetConfig()
     {
         if (_mapper == null)
-        {
             _mapper = new MapperConfiguration(c => c.AddProfile(new MappingProfiles())).CreateMapper();
-        }
         return _mapper;
     }
 }
