@@ -10,14 +10,11 @@ public class ProductController : ControllerBase
 {
     private readonly IProductService _productService;
 
-    public ProductController(IProductService productService)
-    {
-        _productService = productService;
-    }
-    
+    public ProductController(IProductService productService) => _productService = productService;
+
     [HttpGet]
     [Route("[action]")]
-    public async Task<IActionResult> GetListProductOrGetByCategoryId(Guid id) => Ok(await _productService.GetListProduct(id));
+    public async Task<IActionResult> GetListProductOrGetByCategoryId(Guid id) => Ok(await _productService.ProductQuery(id));
 
     [HttpPost]
     [Route("[action]")]

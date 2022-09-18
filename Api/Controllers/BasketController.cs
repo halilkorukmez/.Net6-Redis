@@ -9,11 +9,8 @@ public class BasketController : ControllerBase
 {
     private readonly IBasketService _basketService;
 
-    public BasketController(IBasketService basketService)
-    {
-        _basketService = basketService;
-    }
-    
+    public BasketController(IBasketService basketService) => _basketService = basketService;
+
     [HttpGet]
     [Route("[action]")]
     public async Task<IActionResult> GetBasket(string basketId) => Ok(await _basketService.GetBasket(basketId));
