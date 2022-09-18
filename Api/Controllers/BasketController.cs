@@ -16,22 +16,13 @@ public class BasketController : ControllerBase
     
     [HttpGet]
     [Route("[action]")]
-    public async Task<IActionResult> GetBasket(string basketId)
-    {
-        return Ok(await _basketService.GetBasket(basketId));
-    }
-    
+    public async Task<IActionResult> GetBasket(string basketId) => Ok(await _basketService.GetBasket(basketId));
+
     [HttpPost]
     [Route("[action]")]
-    public async Task<IActionResult> AddOrUpdateBasket([FromBody] Basket basketDto)
-    {
-        return Ok(await _basketService.CreateBasket(basketDto));
-    }
-    
+    public async Task<IActionResult> AddOrUpdateBasket([FromBody] Basket basketDto) => Ok(await _basketService.CreateBasket(basketDto));
+
     [HttpPost]
     [Route("[action]")]
-    public async Task<IActionResult> AddOrUpdateUserBasket([FromBody] Basket basketItemDto)
-    {
-        return Ok(await _basketService.UpdateBasket(basketItemDto));
-    }
+    public async Task<IActionResult> AddOrUpdateUserBasket([FromBody] Basket basketItemDto) => Ok(await _basketService.UpdateBasket(basketItemDto));
 }

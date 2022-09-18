@@ -12,14 +12,10 @@ public class BasketService : IBasketService
     {
         _cacheService = cacheService;
     }
-    public async Task<bool> CreateBasket(Basket basketDto)
-    {
-      return await _cacheService.AddOrUpdate(basketDto.UserId.ToString(), basketDto);
-    }
-    public async Task<Basket> GetBasket(string userName)
-    {
-       return await _cacheService.Get<Basket>(userName);
-    }
+    public async Task<bool> CreateBasket(Basket basketDto) => await _cacheService.AddOrUpdate(basketDto.UserId.ToString(), basketDto);
+
+    public async Task<Basket> GetBasket(string userName) => await _cacheService.Get<Basket>(userName);
+
     public async Task<Basket> UpdateBasket(Basket basket)
     {
         await _cacheService.AddOrUpdate(basket.User.UserName, JsonConvert.SerializeObject(basket));

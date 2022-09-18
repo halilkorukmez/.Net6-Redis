@@ -18,13 +18,11 @@ public class UserService : IUserService
         _unitOfWork = unitOfWork;
         _basketService = basketService;
     }
-    public async Task<List<UserDto>> UserGetQuery(Guid ıd)
-    {
-        return _mapper.Map<List<UserDto>>(
+    public async Task<List<UserDto>> UserGetQuery(Guid ıd) =>
+        _mapper.Map<List<UserDto>>(
             await _unitOfWork.User.GetListAsync(
                 x=> ıd == Guid.Empty && x.IsActive 
                     || x.Id == ıd && x.IsActive ));
-    }
 
     public async Task CreateUser(UserDto userDto)
     {

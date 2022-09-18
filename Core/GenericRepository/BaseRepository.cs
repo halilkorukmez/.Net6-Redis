@@ -8,29 +8,14 @@ namespace Core.GenericRepository;
          where T : class, IBaseModel, new()
  {
         private readonly DbContext _context;
-        public BaseRepository(DbContext context)
-        {
-            _context = context;
-        }
-        public async Task AddAsync(T entity)
-        { 
-            await _context.Set<T>().AddAsync(entity);
-        }
+        public BaseRepository(DbContext context) => _context = context;
+        public async Task AddAsync(T entity) => await _context.Set<T>().AddAsync(entity);
 
-        public async Task<bool> AnyAsync(Expression<Func<T, bool>> predicate)
-        {
-            return await _context.Set<T>().AnyAsync(predicate);
-        }
+        public async Task<bool> AnyAsync(Expression<Func<T, bool>> predicate) => await _context.Set<T>().AnyAsync(predicate);
 
-        public async Task<int> CountAsync(Expression<Func<T, bool>> predicate)
-        {
-            return await _context.Set<T>().CountAsync(predicate);
-        }
+        public async Task<int> CountAsync(Expression<Func<T, bool>> predicate) => await _context.Set<T>().CountAsync(predicate);
 
-        public async Task DeleteAsync(T entity)
-        {
-            await Task.Run(() => { _context.Set<T>().Remove(entity); });
-        }
+        public async Task DeleteAsync(T entity) => await Task.Run(() => { _context.Set<T>().Remove(entity); });
 
         public async Task<T> GetAsync(Expression<Func<T, bool>> predicate)
         {
@@ -48,8 +33,5 @@ namespace Core.GenericRepository;
             return await query.ToListAsync();
         }
 
-        public async Task UpdateAsync(T entity)
-        {
-            await Task.Run(() => { _context.Set<T>().Update(entity);}); 
-        }
-    }
+        public async Task UpdateAsync(T entity) => await Task.Run(() => { _context.Set<T>().Update(entity);});
+ }

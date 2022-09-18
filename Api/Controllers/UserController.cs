@@ -14,10 +14,8 @@ public class UserController : ControllerBase
     }
     [HttpGet]
     [Route("[action]")]
-    public async Task<IActionResult> UserGetQuery(Guid id)
-    {
-        return Ok(await _userService.UserGetQuery(id));
-    }
+    public async Task<IActionResult> UserGetQuery(Guid id) => Ok(await _userService.UserGetQuery(id));
+
     [HttpPost]
     [Route("[action]")]
     public async Task<IActionResult> AddProduct([FromBody] UserDto userDto)

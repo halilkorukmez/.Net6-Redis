@@ -24,10 +24,7 @@ public class CacheService : ICacheService
         return default;
     }
 
-    public async Task<bool> AddOrUpdate(string key, object data)
-    {
-        return await _database.StringSetAsync(key,Convert.ToString(JsonConvert.SerializeObject(data)));
-    }
+    public async Task<bool> AddOrUpdate(string key, object data) => await _database.StringSetAsync(key,Convert.ToString(JsonConvert.SerializeObject(data)));
 
     public async Task<bool> Remove(string key)
     {
@@ -36,13 +33,7 @@ public class CacheService : ICacheService
         return false;
     }
 
-    public void  Clear()
-    { 
-        _database.Multiplexer.GetServer(_configuration.GetSection("RedisCacheUrl").Value).FlushDatabase();
-    }
+    public void  Clear() => _database.Multiplexer.GetServer(_configuration.GetSection("RedisCacheUrl").Value).FlushDatabase();
 
-    public bool Any(string key)
-    {
-        return _database.KeyExists(key);
-    }
+    public bool Any(string key) => _database.KeyExists(key);
 }

@@ -17,19 +17,15 @@ public class ProductService : IProductService
     }
 
     // getListProduct , getProductByCategoryId , getProduct 
-    public async Task<List<ProductDto>> GetListProduct(Guid ıd)
-    {
-        return _mapper.Map<List<ProductDto>>(
+    public async Task<List<ProductDto>> GetListProduct(Guid ıd) =>
+        _mapper.Map<List<ProductDto>>(
             await _unitOfWork.Product.GetListAsync(
                 x=> ıd == Guid.Empty && x.IsActive 
                     || x.CategoryId == ıd && x.IsActive 
                     || x.Id == ıd && x.IsActive ));
-    }
 
-    public async Task AddProduct(ProductDto productDto)
-    {
+    public async Task AddProduct(ProductDto productDto) =>
         await _unitOfWork.Product.AddAsync(
-            _mapper.Map<Product>(productDto))
+                _mapper.Map<Product>(productDto))
             .ContinueWith(t => _unitOfWork.SaveAsync());
-    }
 }

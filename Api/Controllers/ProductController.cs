@@ -17,10 +17,8 @@ public class ProductController : ControllerBase
     
     [HttpGet]
     [Route("[action]")]
-    public async Task<IActionResult> GetListProductOrGetByCategoryId(Guid id)
-    {
-        return Ok(await _productService.GetListProduct(id));
-    }
+    public async Task<IActionResult> GetListProductOrGetByCategoryId(Guid id) => Ok(await _productService.GetListProduct(id));
+
     [HttpPost]
     [Route("[action]")]
     public async Task<IActionResult> AddProduct([FromBody] ProductDto productDto)
