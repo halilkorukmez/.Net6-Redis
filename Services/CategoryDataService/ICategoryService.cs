@@ -5,7 +5,7 @@ namespace Services.CategoryDataService;
 
 public interface ICategoryService
 {
-    Task<List<CategoryDto>> GetOrGetListCategory(Guid ıd);
+    Task<List<CategoryDto>> CategoryQuery(Guid ıd);
     Task AddCategory(CategoryDto categoryDto);
 
 }

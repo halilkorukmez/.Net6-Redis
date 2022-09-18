@@ -17,7 +17,7 @@ public class ProductService : IProductService
     }
 
     // getListProduct , getProductByCategoryId , getProduct 
-    public async Task<List<ProductDto>> GetListProduct(Guid ıd) =>
+    public async Task<List<ProductDto>> ProductQuery(Guid ıd) =>
         _mapper.Map<List<ProductDto>>(
             await _unitOfWork.Product.GetListAsync(
                 x=> ıd == Guid.Empty && x.IsActive 

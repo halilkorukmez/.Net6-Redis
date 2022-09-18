@@ -16,7 +16,7 @@ public class CategoryService : ICategoryService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<List<CategoryDto>> GetOrGetListCategory(Guid ıd) =>
+    public async Task<List<CategoryDto>> CategoryQuery(Guid ıd) =>
         _mapper.Map<List<CategoryDto>>(
             await _unitOfWork.Category.GetListAsync(
                 x=> ıd == Guid.Empty && x.IsActive 

@@ -5,6 +5,6 @@ namespace Services.ProductDataService;
 
 public interface IProductService
 {
-    Task<List<ProductDto>> GetListProduct(Guid ıd );
+    Task<List<ProductDto>> ProductQuery(Guid ıd );
     Task AddProduct(ProductDto productDto);
 }
